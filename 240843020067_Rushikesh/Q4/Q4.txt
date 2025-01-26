@@ -1,0 +1,60 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS E:\CDAC\OS_ASDM\Docker> docker -v
+Docker version 27.4.0, build bde2b89
+PS E:\CDAC\OS_ASDM\Docker> docker images
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+myimg        1.0       5d0a5c2a520a   8 days ago     123MB
+ubuntu       latest    b1d9df8ab815   6 weeks ago    78.1MB
+mysql        latest    56a8c14e1404   2 months ago   603MB
+PS E:\CDAC\OS_ASDM\Docker> new-item -itemtype file -name Dockerfile
+
+
+    Directory: E:\CDAC\OS_ASDM\Docker
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----        07-01-2025  03:53 PM              0 Dockerfile
+
+
+PS E:\CDAC\OS_ASDM\Docker> notepad Dockerfile
+PS E:\CDAC\OS_ASDM\Docker> docker build -t 240843020067 .
+[+] Building 130.4s (9/9) FINISHED                                                                 docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.1s
+ => => transferring dockerfile: 155B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/openjdk:21                                                      4.9s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/4] FROM docker.io/library/openjdk:21@sha256:af9de795d1f8d3b6172f6c55ca9ba1c5768baa11bb2dc8af7045c7db9d4c  121.4s
+ => => resolve docker.io/library/openjdk:21@sha256:af9de795d1f8d3b6172f6c55ca9ba1c5768baa11bb2dc8af7045c7db9d4c33  0.0s
+ => => sha256:af9de795d1f8d3b6172f6c55ca9ba1c5768baa11bb2dc8af7045c7db9d4c33ac 1.04kB / 1.04kB                     0.0s
+ => => sha256:c67f402f77197f2e6ae84ff1fca868699ce3b38bfa78604524051420fa2e4383 954B / 954B                         0.0s
+ => => sha256:079114de2be199f2ae0f7766ac0187d24a0c3a2d658fc51bffc6af5b8bd85469 4.42kB / 4.42kB                     0.0s
+ => => sha256:5262579e8e45cb87fdc8fb6182d30da3c9e4f1036e02223508f287899ea434c0 44.96MB / 44.96MB                  28.1s
+ => => sha256:0eab4e2287a59db00ae2d401e107a120e21ac3a291b097faffb1af38a1bc773c 15.03MB / 15.03MB                  12.5s
+ => => sha256:7c002e8f606286a649b6f6cc6420c9056f7d3075fe3094b9cc33a715ff609335 203.93MB / 203.93MB               104.8s
+ => => extracting sha256:5262579e8e45cb87fdc8fb6182d30da3c9e4f1036e02223508f287899ea434c0                         12.7s
+ => => extracting sha256:0eab4e2287a59db00ae2d401e107a120e21ac3a291b097faffb1af38a1bc773c                          3.2s
+ => => extracting sha256:7c002e8f606286a649b6f6cc6420c9056f7d3075fe3094b9cc33a715ff609335                         15.9s
+ => [internal] load build context                                                                                  0.1s
+ => => transferring context: 161B                                                                                  0.0s
+ => [2/4] WORKDIR /app                                                                                             1.2s
+ => [3/4] COPY HelloWorld.java .                                                                                   0.1s
+ => [4/4] RUN javac HelloWorld.java                                                                                2.1s
+ => exporting to image                                                                                             0.3s
+ => => exporting layers                                                                                            0.2s
+ => => writing image sha256:0f8d7db86b14c0c48ba636038bfcc5a7100193da36547994a1ae2157eb86935d                       0.0s
+ => => naming to docker.io/library/240843020067                                                                    0.0s
+PS E:\CDAC\OS_ASDM\Docker> docker images
+REPOSITORY     TAG       IMAGE ID       CREATED          SIZE
+240843020067   latest    0f8d7db86b14   46 seconds ago   504MB
+myimg          1.0       5d0a5c2a520a   8 days ago       123MB
+ubuntu         latest    b1d9df8ab815   6 weeks ago      78.1MB
+mysql          latest    56a8c14e1404   2 months ago     603MB
+PS E:\CDAC\OS_ASDM\Docker> docker run --rm 240843020067
+Hello World
+PS E:\CDAC\OS_ASDM\Docker>
